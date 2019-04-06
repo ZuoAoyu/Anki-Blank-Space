@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anki隔字挖空</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <div class="card">
+        <article>
+            <h1>金融与居民理财</h1>
+            <div id="acon">
+                所谓金融，简单来讲即货币资金的融通。货币资金来源于居民（包括个人和企业）从事的生产活动。居民是社会最古老、最基本的经济主体，在从自给自足经济向市场经济的逐步发展中，居民的经济活动与金融的联结越来越紧密。现代居民经济生活中的日常收入、支出活动和储蓄、投资等理财活动构成了现代金融供求的重要组成部分。
+                <div>居民通过生产经营活动，提供劳务、经营性资产等各种渠道获得收入，现代经济中居民收入绝大部分是货币性收入。个人居民的收入需要用来满足个人和家庭的生活消费支出，企业居民的收入需要用来满足再生产或者扩大再生产的支出。</div>
+            </div>
+        </article>
+    </div>
+    <script>
+        var sen;//原来的句子
+        var str;//保存挖空后的字符串
+        var state;
+        var patt;//正则表达式
+        var i;
+
+        sen = document.getElementById("acon").innerHTML;
+        
+        str = "";
+        state = 1;
+        patt = /[0-9a-zA-Z\s\u3002|\uff1f|\uff01|\uff0c|\u3001|\uff1b|\uff1a|\u201c|\u201d|\u2018|\u2019|\uff08|\uff09|\u300a|\u300b|\u3008|\u3009|\u3010|\u3011|\u300e|\u300f|\u300c|\u300d|\ufe43|\ufe44|\u3014|\u3015|\u2026|\u2014|\uff5e|\ufe4f|\uffe5]/;
+        for (i=0; i < sen.length; i++) {
+            if (patt.test(sen[i])) {
+                str += sen[i];
+            } else {
+                if (state == 1) {
+                    str += "☐";
+                    state = 0;
+                } else if (state == 0) {
+                    str += sen[i];
+                    state = 1;
+                }
+            }
+        }
+        document.getElementById("acon").innerHTML = str;
+    </script>
+</body>
+</html>
