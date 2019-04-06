@@ -9,11 +9,11 @@
     <div class="card">
         <article>
             <h1>金融与居民理财</h1>
-            <div id="acon">
-                <div>Cats never fail to fascinate human beings. They can be friendly and affectionate towards humans, but they lead mysterious lives of their own as well. They never become submissive like dogs and horses. As a result, humans have learned to respect feline independence. Most cats remain suspicious of humans all their lives. </div>
-                <div>One of the things that fascinates (Corrected by MS Word: fascinate) us most about cats is the popular belief that they have nine lives. Apparently, there is a good deal of truth in this idea. A cat's ability to survive falls is based on fact.</div>
-                Cats never fail to fascinate human beings. They can be friendly and affectionate towards humans, but they lead mysterious lives of their own as well. They never become submissive like dogs and horses. As a result, humans have learned to respect feline independence. Most cats remain suspicious of humans all their lives.&nbsp;<div>One of the things that fascinates (Corrected by MS Word: fascinate) us most about cats is the popular belief that they have nine lives. Apparently, there is a good deal of truth in this idea. A cat's ability to survive falls is based on fact.<br></div>	
+            <div id="acon">	
                 nice to meet you.<div>nice to meet you.<br></div><div>nice to meet you.<br></div>
+                nice to meet you.
+                <div>nice to meet you.<br></div>
+                <div>nice to meet you.<br></div>
             </div>
         </article>
     </div>
@@ -53,11 +53,11 @@
             for (i=0; i<sen.length; i++) {
                 if (patt.test(sen[i])) {
                     str += sen[i];
-                    if (sen[i] == '\<' || sen[i] == '\&') {//解决&nbsp;符号
+                    if (sen[i] == '\<' || sen[i] == '\&') {//解决&nbsp;符号问题
                         divstate = 1;
                     } else if (sen[i] == '\>' || sen[i] == '\;') {
                         divstate = 0;
-                    } else if (sen[i] == ' ' || sen[i] == '\n' || sen[i] == '\t') {
+                    } else if (sen[i] == ' ' || sen[i] == '\n' || sen[i] == '\t' || sen[i] == '\.') {//解决单词无故消失问题，方案1
                         if (state == 1) {
                             state = 0;
                         } else if (state == 0) {
